@@ -1,8 +1,19 @@
+FROM golang as supervisorgo
+MAINTAINER brian.wilkinson@1and1.co.uk
+WORKDIR /go/src/github.com/1and1internet/supervisorgo
+RUN \
+	export GOOS=linux GOARCH=amd64 CGO_ENABLED=0 && \
+	git clone https://github.com/1and1internet/supervisorgo.git . && \
+	go get && \
+	go build -o release/supervisorgo && \
+	echo "supervisorgo successfully built"
 FROM debian:8
 MAINTAINER brian.wojtczak@1and1.co.uk
 COPY files/ /
+COPY --from=supervisorgo /go/src/github.com/1and1internet/supervisorgo/release/supervisorgo /usr/bin/supervisorgo
 RUN \
 	export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
+	update-alternatives --install /usr/bin/supervisord supervisord /usr/bin/supervisorgo 1 && \
 	rm /etc/apt/apt.conf.d/docker-no-languages && \
 	debconf-set-selections -v /etc/debconf-preseed.txt && \
 	apt-get update && \
@@ -23,3 +34,4 @@ ENV \
 	SMTP_DOMAIN="" \
 	SMTP_RELAYHOST=""
 ENTRYPOINT ["/bin/bash", "/init/entrypoint"]
+CMD ["/usr/bin/supervisord"]
