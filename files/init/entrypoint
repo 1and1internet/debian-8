@@ -1,0 +1,5 @@
+#!/bin/bash
+
+run-parts --exit-on-error -v --report /hooks/entrypoint-pre.d
+
+exec $@
