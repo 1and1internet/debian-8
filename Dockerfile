@@ -19,6 +19,7 @@ RUN \
 	apt-get update && \
 	apt-get upgrade && \
 	apt-get install --no-install-recommends apt-utils debconf-utils && \
+	apt-get install --no-install-recommends apt-transport-https ca-certificates && \
 	apt-get install --no-install-recommends locales ssmtp && \
 	dpkg-reconfigure -f noninteractive tzdata && \
 	chmod -R 777 /var/run /var/log /etc/ssmtp /etc/passwd /etc/group && \
