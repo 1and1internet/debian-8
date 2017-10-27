@@ -34,4 +34,4 @@ ENV \
 	SMTP_DOMAIN="" \
 	SMTP_RELAYHOST=""
 ENTRYPOINT ["/bin/bash", "/init/entrypoint"]
-CMD ["/usr/bin/supervisord"]
+CMD ["/init/supervisord"]
