@@ -25,6 +25,7 @@ build:
 	## Starting build of image ${IMAGE_NAME}
 	##
 	docker build ${BUILD_ARGS} --tag ${IMAGE_NAME} .
+	docker history ${IMAGE_NAME}
 
 test:
 	##
