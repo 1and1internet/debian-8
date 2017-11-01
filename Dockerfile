@@ -1,8 +1,7 @@
 FROM golang as supervisorgo
 MAINTAINER brian.wilkinson@1and1.co.uk
 WORKDIR /go/src/github.com/1and1internet/supervisorgo
-RUN export GOOS=linux GOARCH=amd64 CGO_ENABLED=0 \
-	&& git clone https://github.com/1and1internet/supervisorgo.git . \
+RUN git clone https://github.com/1and1internet/supervisorgo.git . \
 	&& go get \
 	&& go build -o release/supervisorgo \
 	&& echo "supervisorgo successfully built"
