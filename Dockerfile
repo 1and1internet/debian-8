@@ -15,7 +15,6 @@ RUN export GOOS=linux GOARCH=amd64 CGO_ENABLED=0 \
 	&& make main \
 	&& echo "configurator successfully built"
 
-
 FROM debian:8
 MAINTAINER brian.wojtczak@1and1.co.uk
 COPY files/ /
