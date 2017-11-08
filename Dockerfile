@@ -2,7 +2,6 @@ FROM golang as supervisorgo
 MAINTAINER brian.wilkinson@1and1.co.uk
 WORKDIR /go/src/github.com/1and1internet/supervisorgo
 RUN git clone https://github.com/1and1internet/supervisorgo.git . \
-	&& go get \
 	&& go build -o release/supervisorgo \
 	&& echo "supervisorgo successfully built"
 
