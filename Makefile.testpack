@@ -1,7 +1,6 @@
 PWD = $(shell pwd)
 IMAGE_NAME = $(shell basename ${PWD})
 BASE_IMAGE = $(shell grep Dockerfile -e FROM | cut -d ' ' -f 2)
-TESTS_REPO = https://github.com/1and1internet/drone-tests.git
 DOCKER_SOCKET = /var/run/docker.sock
 BUILD_ARGS = --rm
 RSPEC_ARGS =
@@ -38,4 +37,4 @@ clean:
 		do docker pull $${IMAGE}; \
 	done
 
-.PHONY: all pull build test do-test checkout-drone-tests run-rspec clean
+.PHONY: all pull build test clean
