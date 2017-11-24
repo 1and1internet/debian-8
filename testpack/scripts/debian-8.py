@@ -8,7 +8,7 @@ import subprocess
 from stat import *
 
 
-class TestUbuntu16(unittest.TestCase):
+class Test1and1BaseImage(unittest.TestCase):
     docker_client = None
     docker_container = None
 
@@ -17,8 +17,8 @@ class TestUbuntu16(unittest.TestCase):
         image_to_test = os.getenv("IMAGE_UNDER_TEST")
         if image_to_test == "":
             raise Exception("I don't know what image to test")
-        TestUbuntu16.docker_client = docker.from_env()
-        TestUbuntu16.container = TestUbuntu16.docker_client.containers.run(
+        Test1and1BaseImage.docker_client = docker.from_env()
+        Test1and1BaseImage.container = Test1and1BaseImage.docker_client.containers.run(
             image=image_to_test,
             remove=True,
             detach=True
@@ -26,11 +26,11 @@ class TestUbuntu16(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        TestUbuntu16.container.stop()
+        Test1and1BaseImage.container.stop()
 
     def setUp(self):
         print ("\nIn method", self._testMethodName)
-        self.container = TestUbuntu16.container
+        self.container = Test1and1BaseImage.container
 
     def execRun(self, command):
         return self.container.exec_run(command).decode('utf-8')
