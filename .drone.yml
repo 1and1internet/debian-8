@@ -40,7 +40,7 @@ pipeline:
       - IMAGE_NAME=build-$$CI_BUILD_NUMBER-$$DRONE_REPO_NAME/$$DRONE_REPO_NAME
     commands:
       - export IMAGE_NAME=build-${CI_BUILD_NUMBER}-${CI_REPO#*/}/${CI_REPO#*/}
-      - drone-tests
+      - drone_tests
 
   publish:
     when:
