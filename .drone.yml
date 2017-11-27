@@ -39,10 +39,8 @@ pipeline:
     environment:
       - IMAGE_NAME=build-$$CI_BUILD_NUMBER-$$DRONE_REPO_NAME/$$DRONE_REPO_NAME
     commands:
-      - env
-      - mount
-      - pwd
-      - ls -lR
+      - export IMAGE_NAME=build-${CI_BUILD_NUMBER}-${CI_REPO#*/}/${CI_REPO#*/}
+      - drone-tests
 
   publish:
     when:
