@@ -14,7 +14,7 @@ class Test1and1BaseImage(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        image_to_test = os.getenv("IMAGE_UNDER_TEST")
+        image_to_test = os.getenv("IMAGE_NAME")
         if image_to_test == "":
             raise Exception("I don't know what image to test")
         Test1and1BaseImage.docker_client = docker.from_env()
