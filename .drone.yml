@@ -19,7 +19,7 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - make --environment-overrides pull IMAGE_NAME=build-${CI_BUILD_NUMBER}-${CI_REPO#*/}/${CI_REPO#*/}
+      - make -f Makefile.testpack --environment-overrides pull IMAGE_NAME=build-${CI_BUILD_NUMBER}-${CI_REPO#*/}/${CI_REPO#*/}
 
   build:
     when:
@@ -28,7 +28,7 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - make --environment-overrides build IMAGE_NAME=build-${CI_BUILD_NUMBER}-${CI_REPO#*/}/${CI_REPO#*/}
+      - make -f Makefile.testpack --environment-overrides build IMAGE_NAME=build-${CI_BUILD_NUMBER}-${CI_REPO#*/}/${CI_REPO#*/}
 
   test:
     when:
@@ -37,7 +37,7 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - make --environment-overrides test IMAGE_NAME=build-${CI_BUILD_NUMBER}-${CI_REPO#*/}/${CI_REPO#*/}
+      - make -f Makefile.testpack --environment-overrides test IMAGE_NAME=build-${CI_BUILD_NUMBER}-${CI_REPO#*/}/${CI_REPO#*/}
 
   publish:
     when:
