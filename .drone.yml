@@ -36,10 +36,8 @@ pipeline:
     image: 1and1internet/testpack-framework
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    commands:
-      - env
-      - export IMAGE_NAME=build-${CI_BUILD_NUMBER}-${CI_REPO#*/}/${CI_REPO#*/}
-      - /init/supervisord
+    environment:
+      - IMAGE_NAME=build-$$CI_BUILD_NUMBER-$$DRONE_REPO_NAME/$$DRONE_REPO_NAME
 
   publish:
     when:
