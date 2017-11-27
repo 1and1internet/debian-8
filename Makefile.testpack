@@ -22,7 +22,7 @@ build:
 	docker build ${BUILD_ARGS} --tag ${IMAGE_NAME} .
 
 test:
-	docker run --rm -i -t -v ${DOCKER_SOCKET}:/var/run/docker.sock -v ${PWD}/:/mnt/ -e IMAGE_NAME=${IMAGE_NAME} ${TPACK_IMAGE}
+	docker run --rm -i -v ${DOCKER_SOCKET}:/var/run/docker.sock -v ${PWD}/:/mnt/ -e IMAGE_NAME=${IMAGE_NAME} ${TPACK_IMAGE}
 
 clean:
 	##
