@@ -33,7 +33,10 @@ class Test1and1BaseImage(unittest.TestCase):
         self.container = Test1and1BaseImage.container
 
     def execRun(self, command):
-        return self.container.exec_run(command).decode('utf-8')
+        result = self.container.exec_run(command)
+        exit_code = result[0]
+        output = result[1].decode('utf-8')
+        return output
 
     def assertPackageIsInstalled(self, packageName):
         op = self.execRun("dpkg -l %s" % packageName)
