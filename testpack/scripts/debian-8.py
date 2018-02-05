@@ -6,44 +6,10 @@ import docker
 import json
 import subprocess
 from stat import *
+from testpack_helper_library.unittests.dockertests import Test1and1Common
 
 
-class Test1and1BaseImage(unittest.TestCase):
-    docker_client = None
-    docker_container = None
-
-    @classmethod
-    def setUpClass(cls):
-        image_to_test = os.getenv("IMAGE_NAME")
-        if image_to_test == "":
-            raise Exception("I don't know what image to test")
-        Test1and1BaseImage.docker_client = docker.from_env()
-        Test1and1BaseImage.container = Test1and1BaseImage.docker_client.containers.run(
-            image=image_to_test,
-            remove=True,
-            detach=True
-        )
-
-    @classmethod
-    def tearDownClass(cls):
-        Test1and1BaseImage.container.stop()
-
-    def setUp(self):
-        print ("\nIn method", self._testMethodName)
-        self.container = Test1and1BaseImage.container
-
-    def execRun(self, command):
-        result = self.container.exec_run(command)
-        exit_code = result[0]
-        output = result[1].decode('utf-8')
-        return output
-
-    def assertPackageIsInstalled(self, packageName):
-        op = self.execRun("dpkg -l %s" % packageName)
-        self.assertTrue(
-            op.find(packageName) > -1,
-            msg="%s package not installed" % packageName
-        )
+class Test1and1BaseImage(Test1and1Common):
 
     # <tests to run>
 
