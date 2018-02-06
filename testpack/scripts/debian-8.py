@@ -31,7 +31,7 @@ class Test1and1BaseImage(Test1and1Common):
         self.assertTrue(lines.find("8.") > -1, msg="Failed to establish correct version")
 
     def test_id(self):
-        self.assertEqual("root", self.execRun("whoami")[:-1])
+        self.assertEqual("10000", self.execRun("whoami")[:-1])
 
     def test_supervisor(self):
         self.assertPackageIsInstalled("supervisor")
