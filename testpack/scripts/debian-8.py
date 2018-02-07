@@ -1,11 +1,6 @@
 #!/usr/bin/env python3
 
 import unittest
-import os
-import docker
-import json
-import subprocess
-from stat import *
 from testpack_helper_library.unittests.dockertests import Test1and1Common
 
 
