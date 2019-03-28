@@ -9,4 +9,3 @@ This image provides a [Debian](https://www.debian.org/) based docker base image 
 ## Current Status: Work In Progress
 
 This image is currently an experimental work in progress.
-.
