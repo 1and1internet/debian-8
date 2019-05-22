@@ -30,7 +30,8 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
 	&& chmod -R 777 /var/run /var/log /etc/ssmtp /etc/passwd /etc/group \
 	&& chmod -R 755 /init /hooks \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/* \
+	&& sed -i '/^root.*/d' /etc/shadow
 ENV \
 	LC_ALL=en_GB.UTF-8 \
 	LANG=en_GB.UTF-8 \
