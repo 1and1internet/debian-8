@@ -4,7 +4,7 @@ BASE_IMAGES = $(shell grep Dockerfile -e FROM | cut -d ' ' -f 2)
 KUBE_CONFIG = ${HOME}/.kube
 BUILD_ARGS = --rm
 TPACK_IMAGE = 1and1internet/testpack-framework
-ROUTE_URL = -paas-library-develop.qacaas.bs.kae.de.iplatform.1and1.org
+ROUTE_URL = 
 GIT_ACCOUNT = 1and1internet
 
 all: pull build test
