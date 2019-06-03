@@ -14,7 +14,7 @@ class Test1and1BaseImage(Test1and1Common):
             "run-parts: executing /hooks/entrypoint-pre.d/02_user_group_setup",
             "run-parts: executing /hooks/supervisord-pre.d/20_configurability"
         ]
-        container_logs = self.container.logs().decode('utf-8')
+        container_logs = self.logs()
         for expected_log_line in expected_log_lines:
             self.assertTrue(
                 container_logs.find(expected_log_line) > -1,
