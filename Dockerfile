@@ -6,7 +6,7 @@ RUN git clone https://github.com/1and1internet/supervisorgo.git . \
 	&& echo "supervisorgo successfully built"
 
 FROM debian:8
-MAINTAINER brian.wojtczak@1and1.co.uk
+MAINTAINER brian.wilkinson@1and1.co.uk
 COPY files/ /
 COPY --from=supervisorgo /go/src/github.com/1and1internet/supervisorgo/release/supervisorgo /usr/bin/supervisorgo
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
