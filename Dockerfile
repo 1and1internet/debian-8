@@ -1,4 +1,4 @@
-FROM golang as supervisorgo
+FROM golang:1.15-buster as supervisorgo
 MAINTAINER brian.wilkinson@1and1.co.uk
 WORKDIR /go/src/github.com/1and1internet/supervisorgo
 RUN git clone https://github.com/1and1internet/supervisorgo.git . \
